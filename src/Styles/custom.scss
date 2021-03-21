@@ -1,0 +1,350 @@
+@font-face {
+    font-family: 'Bebas_neue';
+    src: url('./fonts/BebasNeue-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Alien Encounter';
+    src: url('./fonts/Alien-Encounters-Italic.ttf') format('truetype');
+}
+
+
+$purple_shadow: hsl(310, 100%, 50%);
+
+.backgroundimg {
+    background-image: url(../img/background.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: top;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    -webkit-mask-image: linear-gradient(to top, transparent 45%, black 80%);
+    mask-image: linear-gradient(to top, transparent 40%, black 60%);
+}
+
+.App {
+    position: relative;
+    height: 100vh;
+    background-image: linear-gradient(to bottom right, rgb(66, 66, 66), rgb(243, 38, 133));
+    width: 100%;
+}
+
+
+.topcontent {
+    position: fixed;
+    z-index: 3;
+    width: 100%;
+    height: 50px;
+
+    .topbar {
+        height: 100%;
+        width: 100%;
+        background-color: rgb(179, 236, 22);
+        z-index: 3;
+        display: inline-flex;
+
+
+
+        .sidebarhide {
+
+            color: white;
+            display: inline-block;
+            margin: 10px 10px 0 10px;
+            padding: 3px 3px 3px 13px;
+            border-radius: 50%;
+            text-align: center;
+            cursor: pointer;
+            height: 30px;
+            width: 30px;
+
+            &:active {
+                background-color: rgb(195, 236, 154);
+            }
+
+            >a {
+
+                display: table-cell;
+                vertical-align: middle;
+                text-align: center;
+
+
+                &,
+                &:hover,
+                &:active {
+                    text-decoration: none;
+                }
+            }
+
+        }
+    }
+}
+
+
+.rotate180deg {
+    transform: rotate(180deg);
+}
+
+.sidecontent {
+    background-color: rgb(71, 71, 71);
+    z-index: 1;
+    position: fixed;
+    width: 130px;
+    height: 100vh;
+    transform: translate(0, 40px);
+    box-shadow: 7px 0px 16px $purple_shadow;
+    color: black;
+    transition: all 0.5s;
+}
+
+.sidecontent_closed {
+    transform: translate(-130px, 40px);
+    box-shadow: 0px 0px 0px hsl(0, 0%, 100%);
+    opacity: 0%;
+}
+
+.maincontent {
+    padding: 40px 0 0 0;
+    margin-left: auto;
+    color: white;
+    height: 100%;
+    transition: all 0.5s;
+
+    .backbutton {
+        display: inline-block;
+        background-color: rgba(212, 14, 123, 0.4);
+        color: white;
+        margin: 10px 10px 10px 10px;
+        padding: 3px 20px 3px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+
+        span {
+            margin: 0 5px 0 5px;
+
+        }
+    }
+}
+
+.maincontent_active {
+    padding: 40px 0 0 150px;
+}
+
+.pages {
+    transition: all 0.5s;
+    position: relative;
+    z-index: 2;
+}
+
+.homepagetitle {
+    text-align: center;
+    margin: 30px auto 30px auto;
+    left: 50%;
+    right: auto;
+
+    h1 {
+        color: rgb(16, 206, 240);
+        font-family: 'Alien Encounter';
+        opacity: 0.8;
+        box-shadow: 0px 0px 0px yellow;
+    }
+    #shadw{
+        color: yellow!important;
+        transform:translate(0,-110%);
+    }
+}
+
+
+
+.container {
+    padding-top: 20px;
+    margin-left: 0px;
+}
+
+.sidebar {
+    position: relative;
+    padding: 5px 0px 0 0px;
+    margin: 0px;
+    color: white !important;
+
+    a {
+        text-decoration: none !important;
+        color: white !important;
+    }
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0px;
+}
+
+.sidebar ul>li {
+    border-bottom: white solid 2px;
+    padding: 5px 0px 5px 10px;
+    transition: all 1s;
+}
+
+.sidebar ul>li:hover {
+    border-bottom: rgb(255, 0, 212) solid 2px;
+    border-radius: 1px;
+    cursor: pointer;
+}
+
+.footerbar {
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(59, 59, 59, 0.4);
+    width: 100%;
+    transition: all 0.5s;
+}
+
+.footerbar_active {
+    padding: 0 0 0 130px;
+}
+
+.tabs {
+    display: inline-block;
+    padding: 3px 10px 3px 10px;
+    cursor: pointer;
+
+}
+
+.tabs:hover {
+    background-color: aquamarine;
+    border: black;
+}
+
+
+.fade-enter {
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+.fade-enter-active {
+    opacity: 1;
+    transform: translateX(0%);
+}
+
+.fade-exit {
+    opacity: 1;
+    transform: translateX(0%);
+}
+
+.fade-exit-active {
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+.fade-enter-active,
+.fade-exit-active {
+    transition: opacity 500ms, transform 500ms;
+}
+
+.proj_card {
+    text-overflow: clip;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    width: 150px;
+    height: 150px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 6px;
+    transition: all 0.3s;
+    margin: 20px 10px 20px 10px;
+    padding: 20px 20px 20px 20px;
+
+    img {
+        width: 100%;
+        height: 100%;
+
+    }
+
+    >div {
+        padding-left: 10px;
+        background-color: rgba(119, 119, 119, 0.5);
+        width: 100%;
+        top: 120%;
+        height: 30px;
+        position: absolute;
+        margin: -25px -20px -20px -20px;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+        transition: all 0.3s;
+    }
+
+    &:hover {
+        box-shadow: 0px 0px 16px $purple_shadow;
+        transform: scale(1.04);
+        position: relative;
+        cursor: pointer;
+
+        >div {
+            top: 100%;
+        }
+    }
+}
+
+.tech_card {
+    text-overflow: clip;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    width: 150px;
+    height: 150px;
+    background-color: rgb(252, 252, 252);
+    border-radius: 6px;
+    transition: all 0.3s;
+    margin: 20px 10px 20px 10px;
+    padding: 20px 20px 20px 20px;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+
+    >div {
+        padding-left: 10px;
+        background-color: rgba(119, 119, 119, 0.5);
+        width: 100%;
+        top: 120%;
+        height: 30px;
+        position: absolute;
+        margin: -25px -20px -20px -20px;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+        transition: all 0.3s;
+    }
+
+    &:hover {
+        box-shadow: 0px 0px 16px $purple_shadow;
+        transform: scale(1.04);
+        position: relative;
+        cursor: pointer;
+
+        >div {
+            top: 100%;
+        }
+    }
+}
+
+.sneksettings{
+    border:black 1px solid;
+    position:absolute;
+    margin: auto 30px;
+}
+
+.snake-area {
+    position: relative;
+    margin: 20px auto;
+    width: 70vh;
+    height: 70vh;
+    border: cyan 1px solid;
+}
+
+.snake_comp {
+    position: absolute;
+    width: 2%;
+    height: 2%;
+    background-color: black;
+    border: rgb(66, 66, 66) 1px solid;
+}
