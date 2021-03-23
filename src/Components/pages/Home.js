@@ -6,14 +6,15 @@ import React from 'react'
 const Home = () => {
     return (
         <div className='pages'>
+            <div className="backgroundimg"></div>
 
             <div className='homepagetitle'>
                 <h1>Welcome</h1>
                 <h1 id='shadw'>Welcome</h1>
             </div>
-        
-            
-            
+
+
+
 
         </div>
     )

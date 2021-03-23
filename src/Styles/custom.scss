@@ -17,10 +17,9 @@ $purple_shadow: hsl(310, 100%, 50%);
     background-position: top;
     z-index: 0;
     width: 100%;
-    height: 100%;
+    height: 90%;
     position: absolute;
-    -webkit-mask-image: linear-gradient(to top, transparent 45%, black 80%);
-    mask-image: linear-gradient(to top, transparent 40%, black 60%);
+    mask-image: linear-gradient(to top, transparent 0%, black 70%);
 }
 
 .App {
@@ -28,6 +27,10 @@ $purple_shadow: hsl(310, 100%, 50%);
     height: 100vh;
     background-image: linear-gradient(to bottom right, rgb(66, 66, 66), rgb(243, 38, 133));
     width: 100%;
+    
+    overflow: scroll;
+    text-overflow: clip;
+    white-space: nowrap;
 }
 
 
@@ -104,7 +107,7 @@ $purple_shadow: hsl(310, 100%, 50%);
 }
 
 .maincontent {
-    padding: 40px 0 0 0;
+    padding: 50px 0 0 0;
     margin-left: auto;
     color: white;
     height: 100%;
@@ -127,18 +130,18 @@ $purple_shadow: hsl(310, 100%, 50%);
 }
 
 .maincontent_active {
-    padding: 40px 0 0 150px;
+    padding-left:130px;
 }
 
 .pages {
     transition: all 0.5s;
+    height:90%;
     position: relative;
     z-index: 2;
 }
 
 .homepagetitle {
     text-align: center;
-    margin: 30px auto 30px auto;
     left: 50%;
     right: auto;
 
@@ -328,14 +331,25 @@ $purple_shadow: hsl(310, 100%, 50%);
 }
 
 .sneksettings{
-    border:black 1px solid;
-    position:absolute;
+    white-space: pre-wrap;
+    float: left;
+    text-align: center;
+    border: red 1px solid;
+    width:100px;
+    height: auto;
     margin: auto 30px;
+    >Button{
+        margin:5px 2px 10px 2px;
+    }
+    >label{
+        margin:0;
+        left:50%;
+    }
 }
 
 .snake-area {
+    float: left;
     position: relative;
-    margin: 20px auto;
     width: 70vh;
     height: 70vh;
     border: cyan 1px solid;
@@ -345,6 +359,16 @@ $purple_shadow: hsl(310, 100%, 50%);
     position: absolute;
     width: 2%;
     height: 2%;
-    background-color: black;
-    border: rgb(66, 66, 66) 1px solid;
+    background-color: rgb(60, 193, 255);
+    border: rgb(3, 149, 233) 1px solid;
+    box-shadow: 0px 0px 4px rgb(126, 251, 255);
+}
+.snakefood{
+    background-color: rgb(210, 255, 9);
+    
+    box-shadow: 0px 0px 5px rgb(255, 255, 133);
+    position: absolute;
+    width: 2%;
+    height: 2%;
+
 }

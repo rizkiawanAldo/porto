@@ -6,9 +6,9 @@ import  { useHistory }  from 'react-router-dom'
 const snakePage = () => {
     const changePage = new useHistory();
     return (
-        <div>
+        <div className="snekPage">
             <div className="backbutton" data-tip="Back" onClick={() => changePage.goBack()}>
-                <span><i className="fa fa-caret-left"></i></span> <a>Back</a>
+                <span><i className="fa fa-caret-left"></i></span> <a href=".">Back</a>
             </div>
             <ReactTooltip place="bottom" effect="solid" />
             <SnakeApp />

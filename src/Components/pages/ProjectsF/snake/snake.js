@@ -1,30 +1,40 @@
 import React, { Component } from 'react';
 import SnakeComp from './snakecomp';
-import ReactDOM from 'react-dom';
+import Food from'./food';
 import { Slider } from '@material-ui/core';
 
 class snake extends Component {
-    intervalID=0;
-    state = {
-        snakepot: [
-            [0, 0],
-            [2, 0]
-        ],
-        direction: 'KANAN',
-        started: false,
-        speed:500
-    }
     componentDidMount() {
-
         document.onkeydown = this.onKeyDown;
-        //setInterval(this.movesnek, this.state.speed)
-
-
-
     }
+    constructor(props){
+        super(props);
+        this.state = {
+            snakepot: [
+                [0, 0],
+                [2, 0]
+            ],
+            direction: 'KANAN',
+            started: false,
+            speed:3,
+            foodloc:this.spawnFood(),
+        }
+    }
+  
+    intervalID=0;
+    
+    spawnFood=()=>{
+        let min=0
+        let max=100;
+        let randx= Math.floor(Math.random()*((max-min)/2))*2+min;
+        let randy= Math.floor(Math.random()*((max-min)/2))*2+min;
+        let loc=[randx, randy];
+        return loc;
+    }
+   
     onrefresh=()=>{
        clearInterval(this.intervalID);
-       this.intervalID= setInterval(this.movesnek, this.state.speed)
+       this.intervalID= setInterval(this.movesnek, 400/this.state.speed)
     }
     onStart = () => {      
         this.setState({
@@ -34,7 +44,11 @@ class snake extends Component {
     }
     onKeyDown = (e) => {
         e = e || window.event;
+        console.log(e);
         switch (e.keyCode) {
+            case 18:
+                this.onStart();
+                break;
             case 87:
             case 38:
                 if (this.state.direction !== 'BAWAH')
@@ -64,8 +78,11 @@ class snake extends Component {
 
     movesnek = () => {
         if (this.state.started) {
+            
             let dots = [...this.state.snakepot];
             let head = dots[dots.length - 1];
+
+       
 
             switch (this.state.direction) {
                 case 'KANAN':
@@ -80,9 +97,30 @@ class snake extends Component {
                 case 'BAWAH':
                     head = [head[0], head[1] + 2];
                     break;
+                default:
+                     
             }
             dots.push(head);
-            dots.shift();
+            if(head[0]===this.state.foodloc[0] && head[1]===this.state.foodloc[1]){   
+                this.setState({
+                    foodloc:this.spawnFood()
+                }) 
+            }
+            else if(head[0]>=100|| head[1] >= 100 ||head[0]<0|| head[1] < 0 ){
+                this.onStart(); 
+                this.setState({
+                    snakepot: [
+                        [0, 0],
+                        [2, 0]
+                    ],
+                    direction:"KANAN"
+                });  
+                alert("Game over boi")
+               return;
+            }
+            else{
+                dots.shift();
+            }
             this.setState({
                 snakepot: dots
             })
@@ -96,27 +134,31 @@ class snake extends Component {
     }
 
     render() {
+        
+  
         return (
             <div >
                 <div className='sneksettings'>
-                    <button onClick={this.onStart} className="btn btn-success">
-                        start
+                    <button  onClick={this.onStart} className="btn btn-success">
+                        Start
                     </button>
-
+                    <label>Speed</label>
                     <Slider
+                        tabIndex="-1"
                         value={this.state.speed}
                         onChange={this.speedchange}
                         aria-labelledby="continuous-slider"
-                        step={50}
-                        min={10}
-                        max={500}
-                        valueLabelDisplay="auto"
+                        step={1}
+                        min={1}
+                        max={10}
+                        valueLabelDisplay="off"
                     />
 
                 </div>
                 <div className="snake-area">
                     <SnakeComp snakePot={this.state.snakepot} />
-
+                    <Food loc={this.state.foodloc} started={this.state.started} />
+                   
                 </div>
 
             </div>

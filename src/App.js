@@ -34,9 +34,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {/* <div className="backgroundimg">
-
-      </div> */}
+       
         <div className="topcontent" >
           <Topbar onToggle={hidesidebar} isHide={isHide}/>
         </div>
@@ -55,9 +53,9 @@ function App() {
 
 
         </div>
-        <div className={isHide ? "footerbar" : "footerbar footerbar_active"}>
+        {/* <div className={isHide ? "footerbar" : "footerbar footerbar_active"}>
           <Footerbar />
-        </div>
+        </div> */}
       </div>
     </Router>
   );
