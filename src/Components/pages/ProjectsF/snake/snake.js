@@ -18,6 +18,8 @@ class snake extends Component {
             started: false,
             speed:3,
             foodloc:this.spawnFood(),
+            score:0,
+            highscore:0
         }
     }
   
@@ -44,7 +46,6 @@ class snake extends Component {
     }
     onKeyDown = (e) => {
         e = e || window.event;
-        console.log(e);
         switch (e.keyCode) {
             case 18:
                 this.onStart();
@@ -70,7 +71,6 @@ class snake extends Component {
                     this.setState({ direction: 'KIRI' });
                 break;
             default:
-                console.log('key not valid');
                 break;
         }
 
@@ -103,18 +103,27 @@ class snake extends Component {
             dots.push(head);
             if(head[0]===this.state.foodloc[0] && head[1]===this.state.foodloc[1]){   
                 this.setState({
-                    foodloc:this.spawnFood()
+                    foodloc:this.spawnFood(),
+                    score:this.state.score+1
                 }) 
+                
             }
             else if(head[0]>=100|| head[1] >= 100 ||head[0]<0|| head[1] < 0 ){
                 this.onStart(); 
+                if(this.state.score>this.state.highscore){
+                    this.setState({
+                        highscore:this.state.score
+                    })
+                }
                 this.setState({
                     snakepot: [
                         [0, 0],
                         [2, 0]
                     ],
-                    direction:"KANAN"
-                });  
+                    direction:"KANAN",
+                    score:0
+                });
+                 
                 alert("Game over boi")
                return;
             }
@@ -155,6 +164,8 @@ class snake extends Component {
                     />
 
                 </div>
+                Score= {this.state.score}
+                Highscore={this.state.highscore}
                 <div className="snake-area">
                     <SnakeComp snakePot={this.state.snakepot} />
                     <Food loc={this.state.foodloc} started={this.state.started} />

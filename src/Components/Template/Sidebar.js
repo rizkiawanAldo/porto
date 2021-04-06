@@ -11,7 +11,7 @@ const Sidebar = () => {
                </li>
     })
     return (
-        <div className="sidebar">
+        <div className="sidebar ">
             <ul>
                 {menulist}
             </ul>

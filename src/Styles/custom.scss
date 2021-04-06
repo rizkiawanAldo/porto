@@ -1,11 +1,7 @@
-@font-face {
-    font-family: 'Bebas_neue';
-    src: url('./fonts/BebasNeue-Regular.ttf') format('truetype');
-}
-@font-face {
-    font-family: 'Alien Encounter';
-    src: url('./fonts/Alien-Encounters-Italic.ttf') format('truetype');
-}
+@import "custom_anim.scss";
+@import "custom_reusable.scss";
+@import "./fonts/Fonts-collection.scss";
+
 
 
 $purple_shadow: hsl(310, 100%, 50%);
@@ -21,16 +17,39 @@ $purple_shadow: hsl(310, 100%, 50%);
     position: absolute;
     mask-image: linear-gradient(to top, transparent 0%, black 70%);
 }
+.title-backgroundimg {
+    background-image: url(../img/title-background1.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100vw;
+    height: 40%;
+    position: absolute;
+    mask-image: linear-gradient(to top, transparent 30%, black 70%);
+}
 
 .App {
     position: relative;
     height: 100vh;
-    background-image: linear-gradient(to bottom right, rgb(66, 66, 66), rgb(243, 38, 133));
-    width: 100%;
-    
+    //background: linear-gradient(to bottom right, rgb(66, 66, 66), rgb(243, 38, 133));
+    width: 100vw;
     overflow: scroll;
     text-overflow: clip;
     white-space: nowrap;
+    background: linear-gradient(-45deg, #e079ff, #e73c7e, #9b0074, #e079ff);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 
@@ -38,7 +57,7 @@ $purple_shadow: hsl(310, 100%, 50%);
     position: fixed;
     z-index: 3;
     width: 100%;
-    height: 50px;
+    height: 30px;
 
     .topbar {
         height: 100%;
@@ -46,9 +65,6 @@ $purple_shadow: hsl(310, 100%, 50%);
         background-color: rgb(179, 236, 22);
         z-index: 3;
         display: inline-flex;
-
-
-
         .sidebarhide {
 
             color: white;
@@ -65,7 +81,7 @@ $purple_shadow: hsl(310, 100%, 50%);
                 background-color: rgb(195, 236, 154);
             }
 
-            >a {
+            >p {
 
                 display: table-cell;
                 vertical-align: middle;
@@ -88,75 +104,104 @@ $purple_shadow: hsl(310, 100%, 50%);
     transform: rotate(180deg);
 }
 
+
 .sidecontent {
-    background-color: rgb(71, 71, 71);
-    z-index: 1;
+    z-index: 2;
     position: fixed;
     width: 130px;
     height: 100vh;
-    transform: translate(0, 40px);
+    transform: translate(0, 30px);
+    background-color: rgb(36, 36, 36);
     box-shadow: 7px 0px 16px $purple_shadow;
     color: black;
     transition: all 0.5s;
 }
 
 .sidecontent_closed {
-    transform: translate(-130px, 40px);
+    
+    transform: translate(-120px, 30px);
     box-shadow: 0px 0px 0px hsl(0, 0%, 100%);
-    opacity: 0%;
+    opacity: 10%;
 }
 
 .maincontent {
-    padding: 50px 0 0 0;
+    padding: 30px 0 0 0;
     margin-left: auto;
     color: white;
     height: 100%;
     transition: all 0.5s;
 
-    .backbutton {
-        display: inline-block;
-        background-color: rgba(212, 14, 123, 0.4);
-        color: white;
-        margin: 10px 10px 10px 10px;
-        padding: 3px 20px 3px 10px;
-        border-radius: 5px;
-        cursor: pointer;
-
-        span {
-            margin: 0 5px 0 5px;
-
-        }
-    }
+   
 }
 
 .maincontent_active {
     padding-left:130px;
 }
 
+.content{
+    height:100%;
+    width:100%;
+}
 .pages {
     transition: all 0.5s;
     height:90%;
     position: relative;
-    z-index: 2;
+    padding: 20px 0 0 50px ;
 }
 
 .homepagetitle {
     text-align: center;
     left: 50%;
     right: auto;
+    padding-top:5%;
+    overflow: hidden;
+
 
     h1 {
         color: rgb(16, 206, 240);
         font-family: 'Alien Encounter';
         opacity: 0.8;
         box-shadow: 0px 0px 0px yellow;
+       font-size: 60px;
+
+
     }
     #shadw{
         color: yellow!important;
-        transform:translate(0,-110%);
+        transform:translate(0,-120%);
     }
 }
 
+.flex-cards{
+    display: flex;
+    flex-direction: row;
+}
+.profile-cards{
+    overflow: hidden;
+    white-space:normal;
+    padding:20px 10px 10px 0px;
+    width:250px;
+    h4{
+        margin-bottom: 5px;
+        background-color:rgb(79, 79, 138);
+    }
+    h5{
+        margin-bottom:4px;
+        font-size: 19px;
+        background-color:rgba(112, 112, 255,0.3);
+      
+    }
+    h6{
+        font-size: 13px;
+        margin:0;
+    }
+    p{
+        text-indent: 8px;
+        margin-top:5px;
+        font-size: 12px;
+        margin-bottom: 0px;
+    }
+}
 
 
 .container {
@@ -329,6 +374,9 @@ $purple_shadow: hsl(310, 100%, 50%);
         }
     }
 }
+.snekPage{
+    padding:30px 0 0 10px;
+}
 
 .sneksettings{
     white-space: pre-wrap;
@@ -371,4 +419,43 @@ $purple_shadow: hsl(310, 100%, 50%);
     width: 2%;
     height: 2%;
 
+}
+
+.profileheader{
+    position: relative;
+    margin-bottom: 10px;
+    display:inline-block;
+    white-space: normal;
+    width:90%;
+    .profilename{
+        float:left;
+        h1{
+            font-size: 50px;
+            margin-bottom: 0;
+        }
+        overflow: hidden;
+        p{
+            text-align: right;
+        }
+    } 
+    .contact{
+        p{
+            font-size: 12px;
+            padding-left: 2px;
+           
+        }
+       
+        float:right;
+        width:20%;
+    }
+}
+a {
+    text-decoration: none ;
+    color:white !important;
+}
+
+a:hover {
+    color:rgb(247, 0, 0);
+    text-decoration:none;
+    cursor:pointer;
 }

@@ -5,17 +5,15 @@ import React from 'react'
 
 const Home = () => {
     return (
-        <div className='pages'>
-            <div className="backgroundimg"></div>
-
-            <div className='homepagetitle'>
-                <h1>Welcome</h1>
-                <h1 id='shadw'>Welcome</h1>
+        <div>
+            <div credit="https://wallhaven.cc/w/9mxz8k" className="backgroundimg"></div>
+            <div className='pages'>
+                <div className='homepagetitle'>
+                    <h1 data-text="Welcome" className=" glitch">Welcome</h1>
+                    <h1 id='shadw'>Welcome</h1>
+                    {/* <div class="scanlines"></div> */}
+                </div>
             </div>
-
-
-
-
         </div>
     )
 }

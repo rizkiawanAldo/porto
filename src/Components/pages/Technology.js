@@ -1,7 +1,5 @@
 import React from 'react'
-import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import csharp from '../../img/c.svg';
 import net from '../../img/net.svg';
 import reactL from '../../img/reactL.svg';
@@ -9,13 +7,11 @@ import reactL from '../../img/reactL.svg';
 
 const Technology = () => {
     return (
-        <div className="pages">
-            <Container>
-                <Row>
-                    <Col>
-                        <h1>Technologies</h1>
-                    </Col>
-                </Row>
+        <div >
+            <div credit="https://wallhaven.cc/w/3zk25y" className="title-backgroundimg"></div>
+
+            <div className="pages">
+                <h1>Technologies</h1>
                 <Row>
                     <div className="tech_card">
                         <div>C#</div>
@@ -30,10 +26,8 @@ const Technology = () => {
                         <img alt="REact" src={reactL}></img>
                     </div>
                     <div className="tech_card"></div>
-
-
                 </Row>
-            </Container>
+            </div>
         </div>
     )
 }
