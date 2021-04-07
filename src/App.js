@@ -6,7 +6,7 @@ import ProfilePage from './Components/pages/Profile'
 import ProjectPage from './Components/pages/Projects'
 import TechPage from './Components/pages/Technology'
 import SnakePage from'./Components/pages/ProjectsF/snake/snakePage'
-import ArduinoPage from './Components/pages/ProjectsF/arduinopage'
+import ArduinoPage from './Components/pages/ProjectsF/diyProjects'
 
 
 import Topbar from './Components/Template/Topbar'
@@ -55,7 +55,7 @@ function App() {
             <Route exact path="/project" component={ProjectPage} />
             <Route exact path="/tech" component={TechPage} />
             <Route exact path="/project/snake" component={SnakePage} />
-            <Route exact path="/project/arduinos" component={ArduinoPage}/>
+            <Route exact path="/project/diy" component={ArduinoPage}/>
 
           </Switch>
 

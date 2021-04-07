@@ -19,8 +19,8 @@ const Projects = () => {
                         <div>Snake</div>
                         <img src={snake} alt="snake img"></img>
                     </div>
-                    <div  onClick={() => changePage.push("/project/arduinos")} className="proj_card">
-                        <div>Arduino Projects</div>
+                    <div  onClick={() => changePage.push("/project/diy")} className="proj_card">
+                        <div>DIY Projects</div>
                         <img src={arduino} alt="arduino logo"></img>
                     </div>
                     <div className="proj_card"></div>
